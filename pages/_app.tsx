@@ -8,7 +8,7 @@ import "@fontsource/poppins"; // Defaults to weight 400.
 
 import createEmotionCache from '../utility/createEmotionCache';
 import lightThemeOptions from '../styles/theme/lightTheme';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import nextI18NextConfig from '../next-i18next.config.js';
 import { CommonProvider } from '../context/CommonContext';
 import Navbar from '../components/Navbar/Navbar';

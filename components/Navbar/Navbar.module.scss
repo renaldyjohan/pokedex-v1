@@ -1,3 +1,5 @@
+@use 'styles/breakpoint' as *;
+
 .container {
   position: sticky;
   width: 100%;
@@ -21,6 +23,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  @include media-breakpoint-down(xl) {
+    padding: 7px 80px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 7px 50px;
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding: 7px 20px;
+  }
 }
 
 .globe {

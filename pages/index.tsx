@@ -1,12 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { useTranslation } from 'next-i18next'
+import styles from '../styles/Home.module.scss'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import HomeLanding from '../components/HomeLanding/HomeLanding'
+import { useRef } from 'react'
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('home')
+  const myRef = useRef(null)
+  const scrollToRef = (ref:any) => window.scrollTo({top:ref.current.offsetTop, behavior:'smooth'})
+
+  const handleScroll = () => scrollToRef(myRef)
+  // run this function from an event handler or an effect to execute scroll
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,21 +20,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h2>{t('HEADER_TITLE')}</h2>
-        <h3>{t('HEADER_SUBTITLE')}</h3>
+        <HomeLanding handleScroll={handleScroll} />
+        <div style={{height: 2000}} ref={myRef}></div>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }
