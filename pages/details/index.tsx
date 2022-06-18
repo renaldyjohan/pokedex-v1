@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from '../../styles/Home.module.scss'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import HomeLanding from '../components/HomeLanding/HomeLanding'
+import HomeLanding from '../../components/HomeLanding/HomeLanding'
 import { useRef } from 'react'
 
 const Home: NextPage = () => {
