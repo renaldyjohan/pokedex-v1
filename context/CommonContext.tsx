@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode } from "react";
 
 type commonContextType = {
     locale: string;

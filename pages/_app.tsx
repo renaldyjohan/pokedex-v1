@@ -11,6 +11,7 @@ import lightThemeOptions from '../styles/theme/lightTheme';
 import '../styles/globals.scss';
 import nextI18NextConfig from '../next-i18next.config.js';
 import { CommonProvider } from '../context/CommonContext';
+import { PageProvider } from '../context/PageContext';
 import Navbar from '../components/Navbar/Navbar';
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -25,13 +26,15 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CommonProvider>
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
-          <Navbar />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </CacheProvider>
+        <CacheProvider value={emotionCache}>
+          <ThemeProvider theme={lightTheme}>
+            <CssBaseline />
+            <PageProvider>
+              <Navbar />
+              <Component {...pageProps} />
+            </PageProvider>
+          </ThemeProvider>
+        </CacheProvider>
     </CommonProvider>
   );
 };

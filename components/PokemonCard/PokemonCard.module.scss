@@ -1,0 +1,83 @@
+@use 'styles/breakpoint' as *;
+
+.CardWrapper {
+  width: 325.33px;
+  min-height: 550px;
+  background: #FFFFFF;
+  border-radius: 24px;
+}
+
+.CardWrapper:hover {
+  box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.CardContent {
+  padding: 45.5px 25.17px;
+  position: relative;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.PokemonId {
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #B3B6B8;
+}
+
+.PokemonName {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #42494D;
+  text-transform: capitalize;
+  padding-top: 10px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.TypeWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.PokemonType {
+  text-align: center;
+  height: 32px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+}
+
+.NoImage {
+  width: 100%;
+  height: 275px;
+  background-color: #B3B6B8;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.PokemonLabel {
+  position: absolute;
+  background-color: darkorchid;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  padding: 4px 0px;
+  right: -130px;
+  top: 60px;
+  text-align: center;
+  width: 430px;
+  transform: rotate(45deg);
+}
+
