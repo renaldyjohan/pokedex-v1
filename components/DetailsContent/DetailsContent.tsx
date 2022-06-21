@@ -5,6 +5,7 @@ import lightThemeOptions from '../../styles/theme/lightTheme';
 import { useTranslation } from 'next-i18next';
 import React, { useEffect, useState } from 'react';
 import DetailsEvo from './DetailsEvo';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 interface IDetailsContent {
   pokemonData: IPokemonData;
@@ -43,7 +44,7 @@ const DetailsContent: React.FC<IDetailsContent> = ({pokemonData, evo}) => {
 
   const getStatus = (status:any) => {
     return (
-      <div className={styles.Status}>
+      <div className={styles.Status} key={status.stat.name}>
         <div className={styles[status.stat.name]}>
           <div className={styles.StatusItem}>
             <div>
@@ -122,8 +123,9 @@ const DetailsContent: React.FC<IDetailsContent> = ({pokemonData, evo}) => {
             <div className={styles.EvoWrapper}>
               {chain.map((pokemon: any, index:number) => {
                 return (
-                  <div key={pokemon.url}>
-                    <DetailsEvo url={pokemon.url} index={index} chain={chain}/>
+                  <div style={{display:'flex', alignItems:'center', gap:25}} key={pokemon.url}>
+                    <DetailsEvo url={pokemon.url} index={index}/>
+                    {index+1< chain.length && <ArrowForwardIcon style={{height:50, width:50}} />}
                   </div>
                 );})}
             </div>
