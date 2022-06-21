@@ -123,10 +123,10 @@ const DetailsContent: React.FC<IDetailsContent> = ({pokemonData, evo}) => {
             <div className={styles.EvoWrapper}>
               {chain.map((pokemon: any, index:number) => {
                 return (
-                  <>
+                  <div key={pokemon.url}>
                     <DetailsEvo url={pokemon.url} index={index}/>
                     {index+1< chain.length && <ArrowForwardIcon style={{height:50, width:50}} />}
-                  </>
+                  </div>
                 );})}
             </div>
           </>
