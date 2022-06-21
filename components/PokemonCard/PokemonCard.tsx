@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import styles from './PokemonCard.module.scss';
 import { usePage } from '../../context/PageContext';
 import lightThemeOptions from '../../styles/theme/lightTheme';
@@ -26,6 +26,7 @@ type pokemonType =
 
 interface PokemonCardProps {
   url:string;
+  setPopup:Dispatch<SetStateAction<string | undefined>>;
 }
 
 interface PokemonTypeProps {
@@ -36,7 +37,7 @@ interface PokemonTypeProps {
   };
 }
 
-interface dataProps {
+interface PokemonDataProps {
   id: number;
   sprites: {
     front_default: string;
@@ -45,9 +46,9 @@ interface dataProps {
   types: PokemonTypeProps[];
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({
+const PokemonCard: React.FC<PokemonCardProps> = ({setPopup,
   url}) => {
-  const [data, setData] = useState<dataProps | undefined>(undefined);
+  const [data, setData] = useState<PokemonDataProps | undefined>(undefined);
   const {getPokemonData} = usePage();
 
   useEffect(()=> {
@@ -90,7 +91,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 
   return (
     <div>
-      <div className={styles.CardWrapper}>
+      <div className={styles.CardWrapper} onClick={()=>setPopup(url)}>
         <div className={styles.CardContent}>
           { getLabel(data?.name) &&
             <div className={styles.PokemonLabel}>{getLabel(data?.name)}</div>
@@ -103,8 +104,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
             {data && getDisplayId(data.id)}
           </div>
           <div className={styles.PokemonName}>
-            {/* {getDisplayName(data?.name)} */}
-            {data?.name}
+            {getDisplayName(data?.name)}
           </div>
           <div className={styles.TypeWrapper}>
             {

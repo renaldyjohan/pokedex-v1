@@ -220,3 +220,14 @@
     }
   }
 }
+
+.Backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: #42494D;
+  opacity: 0.8;
+  z-index: 30;
+}

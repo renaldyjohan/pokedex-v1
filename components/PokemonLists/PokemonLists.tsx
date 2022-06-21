@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PokemonLists.module.scss';
 import { MenuItem, Pagination, Select, Typography } from '@mui/material';
 import { usePage } from '../../context/PageContext';
 import PokemonCard from '../PokemonCard/PokemonCard';
 import { useTranslation } from 'next-i18next';
+import DetailsPopup from '../DetailsPopup/DetailsPopup';
 
 interface PokemonListsProps {
 }
@@ -12,9 +13,16 @@ const PokemonLists: React.FC<PokemonListsProps> = ({
 }) => {
   const {page, setPage, setPerPage, perPage, pokemonLists} = usePage();
   const { t } = useTranslation('home');
-
+  const [popup, setPopup] = useState<string | undefined>(undefined)
   return (
     <div className={styles.Wrapper}>
+      {
+        popup &&
+        <>
+          <div className={styles.Backdrop} onClick={()=>setPopup(undefined)} />
+          <DetailsPopup url={popup} />
+        </>
+      }
       <div className={styles.TopCircle}>
         <div className={styles.Inner} />
         <div className={styles.Outer} />
@@ -35,7 +43,7 @@ const PokemonLists: React.FC<PokemonListsProps> = ({
         </div>
       </div>
       <div className={styles.ListWrapper}>
-        {pokemonLists?.results?.map((pokemon)=> <PokemonCard url={pokemon.url} key={pokemon.url} />)}
+        {pokemonLists?.results?.map((pokemon)=> <PokemonCard url={pokemon.url} key={pokemon.url} setPopup={setPopup} />)}
       </div>
       {
         pokemonLists &&
