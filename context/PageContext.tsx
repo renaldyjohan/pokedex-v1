@@ -39,7 +39,7 @@ export function usePage() {
     const [pokemonLists, setPokemonLists] = useState<pokemonListProps | undefined>(undefined)
 
     const getPokemonLists = async () => {
-      const results =  await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${(page-1)*9}&limit=${9}`);
+      const results =  await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${(page-1)*perPage}&limit=${perPage}`);
       const data: pokemonListProps = results.data;
       setPokemonLists(data)
     }
@@ -47,7 +47,6 @@ export function usePage() {
     const getPokemonData = async (url:string) => {
       const results =  await axios.get(url);
       const data = results.data;
-      console.log(data)
       return data;
     }
 

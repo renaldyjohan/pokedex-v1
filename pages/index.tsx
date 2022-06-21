@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import React from "react";
-import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import HomeLanding from '../components/HomeLanding/HomeLanding'
-import { useRef } from 'react'
+import type { NextPage } from 'next';
+import React from 'react';
+import Head from 'next/head';
+import styles from '../styles/Home.module.scss';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import HomeLanding from '../components/HomeLanding/HomeLanding';
+import { useRef } from 'react';
 import PokemonLists from '../components/PokemonLists/PokemonLists';
 
 interface getStaticPropsProps {
@@ -16,9 +16,9 @@ interface homeProps {
 }
 
 const Home: NextPage<homeProps> = ({}) => {
-  const myRef = useRef(null)
-  const scrollToRef = (ref:any) => window.scrollTo({top:ref.current.offsetTop, behavior:'smooth'})
-  const handleScroll = () => scrollToRef(myRef)
+  const myRef = useRef(null);
+  const scrollToRef = (ref:any) => window.scrollTo({top:ref.current.offsetTop, behavior:'smooth'});
+  const handleScroll = () => scrollToRef(myRef);
   return (
     <div className={styles.container}>
       <Head>
@@ -33,15 +33,15 @@ const Home: NextPage<homeProps> = ({}) => {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
 export async function getStaticProps({ locale }:getStaticPropsProps) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common','home'])),
-      }
     }
+  };
 }
 
-export default Home
+export default Home;

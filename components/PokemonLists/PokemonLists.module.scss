@@ -1,8 +1,11 @@
 @use 'styles/breakpoint' as *;
 
 .Wrapper {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   padding: 124.25px 140px;
+  padding-top: 80px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -24,12 +27,33 @@
   }
 }
 
+.Header {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #42494D;
+  padding-bottom: 58px;
+  position: relative;
+  z-index: 20;
+}
+
+.Subheader {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #42494D;
+}
+
 .ListWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 50px;
   justify-items: center;
   width: 100%;
+  position: relative;
+  z-index: 20;
 }
 
 .DetailTitle {
@@ -99,4 +123,100 @@
     padding: 8px 28px;
   }
 
+}
+
+.TopCircle {
+  position: absolute;
+  top: -295px;
+  left: -295px;
+}
+
+.BotCircle {
+  position: absolute;
+  bottom: 295px;
+  right: 295px;
+}
+
+.Inner {
+  position: absolute;
+  height: 260px;
+  width: 260px;
+  border-radius: 50%;
+  background-color: #FFCB3B;
+  z-index: 10;
+  top:165px;
+  left:165px;
+}
+
+.Outer {
+  position: absolute;
+  height: 590px;
+  width: 590px;
+  border-radius: 50%;
+  background-color: #FFE59D;
+  z-index: 9;
+}
+
+.PaginationWrapper {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #FFFFFF;
+  display: grid;
+  grid-template-columns: max-content max-content auto max-content;
+  align-items: center;
+  gap: 10px;
+  padding-top: 58px;
+  position: relative;
+  z-index: 20;
+  @include media-breakpoint-down(xl) {
+    padding: 0px 80px;
+    padding-top: 58px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 0px 50px;
+    padding-top: 58px;
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding: 0px 20px;
+    padding-top: 58px;
+  }
+}
+
+.Select {
+  div{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    border-radius: 8px;
+  }
+  .field-set{
+    border-width: 0;
+  }
+  svg{
+    fill: #FFFFFF;
+  }
+}
+
+.Pagination {
+  li{
+    button{
+      border: 3px solid #FFFFFF;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      color: #FFFFFF;
+    }
+    div {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      color: #FFFFFF;
+    }
+  }
 }

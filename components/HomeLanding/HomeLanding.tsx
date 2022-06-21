@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useTranslation } from 'next-i18next'
-import Image from '../../constant/image'
-import styles from './HomeLanding.module.scss'
+import { useTranslation } from 'next-i18next';
+import Image from '../../constant/image';
+import styles from './HomeLanding.module.scss';
 
 interface HomeLandingProps {
   handleScroll: () => void;
@@ -10,7 +10,7 @@ interface HomeLandingProps {
 const HomeLanding: React.FC<HomeLandingProps> = ({
   handleScroll
 }) => {
-  const { t } = useTranslation('home')
+  const { t } = useTranslation('home');
   return (
     <div className={styles.LandingWrapper}>
       <div className={styles.DetailWrapper}>
@@ -21,6 +21,6 @@ const HomeLanding: React.FC<HomeLandingProps> = ({
       <img src={Image.Home} alt="hero-image" />
     </div>
   );
-}
+};
 
 export default HomeLanding;

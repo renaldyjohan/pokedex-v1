@@ -2,9 +2,9 @@ import * as React from 'react';
 import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
-import { appWithTranslation } from 'next-i18next'
+import { appWithTranslation } from 'next-i18next';
 
-import "@fontsource/poppins"; // Defaults to weight 400.
+import '@fontsource/poppins'; // Defaults to weight 400.
 
 import createEmotionCache from '../utility/createEmotionCache';
 import lightThemeOptions from '../styles/theme/lightTheme';
@@ -26,15 +26,15 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CommonProvider>
-        <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={lightTheme}>
-            <CssBaseline />
-            <PageProvider>
-              <Navbar />
-              <Component {...pageProps} />
-            </PageProvider>
-          </ThemeProvider>
-        </CacheProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <PageProvider>
+            <Navbar />
+            <Component {...pageProps} />
+          </PageProvider>
+        </ThemeProvider>
+      </CacheProvider>
     </CommonProvider>
   );
 };

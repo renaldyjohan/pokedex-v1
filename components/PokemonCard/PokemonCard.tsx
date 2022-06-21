@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './PokemonCard.module.scss'
+import styles from './PokemonCard.module.scss';
 import { usePage } from '../../context/PageContext';
 import lightThemeOptions from '../../styles/theme/lightTheme';
 
@@ -46,47 +46,47 @@ interface dataProps {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({
-url}) => {
-  const [data, setData] = useState<dataProps | undefined>(undefined)
-  const {getPokemonData} = usePage()
-  // console.log(props.theme)
+  url}) => {
+  const [data, setData] = useState<dataProps | undefined>(undefined);
+  const {getPokemonData} = usePage();
 
   useEffect(()=> {
     async function fetchData() {
-      let response = await getPokemonData(url)
-      setData(response)
+      let response = await getPokemonData(url);
+      setData(response);
     }
-    fetchData()
+    fetchData();
+  // eslint-disable-next-line
   },[])
 
   const getDisplayId = (id: number) => {
-    if (id<10) return `#00${id}`
-    if (id<100) return `#0${id}`
-    return `#${id}`
-  }
+    if (id<10) return `#00${id}`;
+    if (id<100) return `#0${id}`;
+    return `#${id}`;
+  };
 
   const getDisplayName = (name:string|undefined) => {
     if(name) {
-      const splittedName = name.split("-")
-      return(splittedName[0])
+      const splittedName = name.split('-');
+      return(splittedName[0]);
     }
-    return "";
-  }
+    return '';
+  };
 
   const getLabel = (name:string|undefined) => {
     if(name) {
-      const splittedName = name.split("-")
+      const splittedName = name.split('-');
       if(splittedName.length>1) {
-        let label = ""
+        let label = '';
         for(let i=1;i<splittedName.length;i++) {
-          label += splittedName[i] + " "
+          label += splittedName[i] + ' ';
         }
         return label;
       }
       return null;
     }
     return null;
-  }
+  };
 
   return (
     <div>
@@ -112,6 +112,7 @@ url}) => {
                 <div
                   className={styles.PokemonType}
                   style={{backgroundColor:lightThemeOptions.backgroundType[type.type.name]}}
+                  key={type.slot+type.type.name}
                 >
                   {type.type.name}
                 </div>)
@@ -121,6 +122,6 @@ url}) => {
       </div>
     </div>
   );
-}
+};
 
 export default PokemonCard;
