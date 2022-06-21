@@ -2,6 +2,7 @@ import styles from './DetailsEvo.module.scss';
 import { getShortDisplayName } from '../../utility/common';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 interface IDetailsEvo {
   url: string;
@@ -9,8 +10,16 @@ interface IDetailsEvo {
 }
 
 const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
-
+  const router = useRouter();
+  const { pathname } = router;
   const [data, setData] = useState<any>(undefined);
+
+  const onRedirect = (e:any) => {
+    router.push({
+            pathname: `${pathname}`,
+            query: {id:data?.id}
+        });
+  };
 
   useEffect(()=> {
     async function fetchData() {
@@ -23,7 +32,7 @@ const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
   },[])
 
   return (
-    <div className={styles.Container}>
+    <div className={styles.Container} onClick={(e)=>onRedirect(e)}>
       <div className={styles[`Wrapper${index}`]}>
         {
           data &&
