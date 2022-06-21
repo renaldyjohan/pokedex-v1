@@ -15,15 +15,15 @@ const DetailsPopup: React.FC<IDetailsPopup> = ({
   url}) => {
   const [data, setData] = useState<IPokemonData | undefined>(undefined);
   const {getPokemonData} = usePage();
-  const { t } = useTranslation(['home', 'details'])
+  const { t } = useTranslation(['home', 'details']);
   const router = useRouter();
   const { pathname, locale } = router;
 
   const onRedirect = (e:any) => {
     router.push({
-            pathname: `${pathname}/[locale]/[id]`,
-            query: {id:data?.id ,locale:locale}
-        });
+      pathname: `${pathname}/[locale]/[id]`,
+      query: {id:data?.id ,locale:locale}
+    });
   };
 
   useEffect(()=> {
@@ -49,13 +49,13 @@ const DetailsPopup: React.FC<IDetailsPopup> = ({
             </div>
             <div className={styles.DetailsWrapper}>
               <div className={styles.SizeWrapper}>
-                <div>{t("WEIGHT", {ns: "details"})} :</div>
+                <div>{t('WEIGHT', {ns: 'details'})} :</div>
                 <div className={styles.ItemDetails}>{data?.weight}</div>
-                <div>{t("HEIGHT", {ns: "details"})} :</div>
+                <div>{t('HEIGHT', {ns: 'details'})} :</div>
                 <div className={styles.ItemDetails}>{data?.height}</div>
               </div>
               <div className={styles.AbilitiesWrapper}>
-                <div>{t("ABILITIES", {ns: "details"})} :</div>
+                <div>{t('ABILITIES', {ns: 'details'})} :</div>
                 <div className={styles.ItemDetails}>
                   {data?.abilities && data?.abilities.length>0 && data?.abilities.map((ability)=> (
                     <li key={ability.ability.url}>
@@ -65,7 +65,7 @@ const DetailsPopup: React.FC<IDetailsPopup> = ({
                 </div>
               </div>
               <div className={styles.TypeWrapper}>
-                <div>{t("TYPE", {ns: "details"})} :</div>
+                <div>{t('TYPE', {ns: 'details'})} :</div>
                 <div style={{display: 'flex', gap: 20}}>
                   {
                     data?.types?.map((type) =>
@@ -84,7 +84,7 @@ const DetailsPopup: React.FC<IDetailsPopup> = ({
                   onClick={(e) => onRedirect(e)}
                   className={styles.Button}
                 >
-                  {t("MORE_DETAIL")}
+                  {t('MORE_DETAIL')}
                 </div>
               </div>
             </div>

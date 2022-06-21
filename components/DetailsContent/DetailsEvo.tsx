@@ -16,15 +16,15 @@ const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
 
   const onRedirect = (e:any) => {
     router.push({
-            pathname: `${pathname}`,
-            query: {id:data?.id}
-        });
+      pathname: `${pathname}`,
+      query: {id:data?.id}
+    });
   };
 
   useEffect(()=> {
     async function fetchData() {
       let response = await axios.get(url);
-      let response2 = await axios.get(`https://pokeapi.co/api/v2/pokemon/${response.data.id}`)
+      let response2 = await axios.get(`https://pokeapi.co/api/v2/pokemon/${response.data.id}`);
       setData(response2.data);
     }
     fetchData();

@@ -13,7 +13,7 @@ const PokemonLists: React.FC<IPokemonLists> = ({
 }) => {
   const {page, setPage, setPerPage, perPage, pokemonLists} = usePage();
   const { t } = useTranslation('home');
-  const [popup, setPopup] = useState<string | undefined>(undefined)
+  const [popup, setPopup] = useState<string | undefined>(undefined);
   return (
     <div className={styles.Wrapper}>
       {

@@ -34,10 +34,10 @@ interface getStaticPropsProps {
 }
 
 export async function getStaticProps({ params: {id}, locale }:getStaticPropsProps) {
-  const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const result:IPokemonData = res.data;
-  let res2:any = {}
-  if(result && result.species) res2 = await axios.get(result?.species?.url)
+  let res2:any = {};
+  if(result && result.species) res2 = await axios.get(result?.species?.url);
   const result2 = res2.data;
   const res3:any = await axios.get(result2.evolution_chain.url);
   const result3 = res3.data;
@@ -50,11 +50,11 @@ export async function getStaticProps({ params: {id}, locale }:getStaticPropsProp
     weight: result.weight,
     height: result.height,
     stats: result.stats,
-  }
+  };
 
   return {
     props: {
-      ...(await serverSideTranslations(locale? locale : "en" , ['common', 'home', 'details'])),
+      ...(await serverSideTranslations(locale? locale : 'en' , ['common', 'home', 'details'])),
       pokemonData,
       evo: result3,
     },
@@ -70,7 +70,7 @@ export async function getStaticPaths() {
       { params: { id: '2' } },
     ],
     fallback: true,
-  }
+  };
 }
 
 export default Details;
