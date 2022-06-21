@@ -35,18 +35,18 @@ const DetailsEvo: React.FC<IDetailsEvo> = ({url, index, chain}) => {
 
   return (
     <>
-    <div className={styles.Container} onClick={(e)=>onRedirect(e)}>
-      <div className={styles[`Wrapper${index}`]}>
-        {
-          data &&
+      <div className={styles.Container} onClick={(e)=>onRedirect(e)}>
+        <div className={styles[`Wrapper${index}`]}>
+          {
+            data &&
             <img src={data.sprites.front_default} alt='evo-display' />
-        }
+          }
+        </div>
+        <div>
+          {data && getShortDisplayName(data.name)}
+        </div>
       </div>
-      <div>
-        {data && getShortDisplayName(data.name)}
-      </div>
-    </div>
-    {index+1< chain.length && <ArrowForwardIcon style={{height:50, width:50}} />}
+      {index+1< chain.length && <ArrowForwardIcon style={{height:50, width:50}} />}
     </>
   );
 };
