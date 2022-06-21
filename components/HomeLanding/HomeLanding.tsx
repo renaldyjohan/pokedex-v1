@@ -3,11 +3,11 @@ import { useTranslation } from 'next-i18next';
 import Image from '../../constant/image';
 import styles from './HomeLanding.module.scss';
 
-interface HomeLandingProps {
+interface IHomeLanding {
   handleScroll: () => void;
 }
 
-const HomeLanding: React.FC<HomeLandingProps> = ({
+const HomeLanding: React.FC<IHomeLanding> = ({
   handleScroll
 }) => {
   const { t } = useTranslation('home');

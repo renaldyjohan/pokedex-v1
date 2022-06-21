@@ -8,11 +8,11 @@ import Image from '../../constant/image';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
-interface NavbarProps {
+interface INavbar {
 
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<INavbar> = () => {
   const { locale } = useCommon();
   const [dropdown, setDropdown] = useState(false);
   const router = useRouter();

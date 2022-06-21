@@ -1,0 +1,9 @@
+{
+  "WEIGHT": "Berat",
+  "HEIGHT": "Tinggi",
+  "ABILITIES": "Kemampuan Khusus",
+  "TYPE":"Tipe",
+  "OTHER_IMAGES":"Gambar Lain",
+  "STATUS":"Status",
+  "EVOLUTION":"Evolusi"
+}

@@ -1,0 +1,191 @@
+.DetailWrapper {
+  padding: 80px 140px;
+}
+
+.DetailContent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 26px;
+  align-items: center;
+
+  img {
+    width: 400px;
+    // background: #B3B6B8;
+  }
+}
+
+.PokemonName {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #42494D;
+  text-transform: capitalize;
+  padding: 10px 0;
+}
+
+.DetailsWrapper {
+  padding: 10px 0;
+  margin-top: 16px;
+}
+
+.SizeWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42494D;
+  padding: 10px 0;
+}
+
+.ItemDetails {
+  font-weight: 400;
+}
+
+.AbilitiesWrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42494D;
+  padding: 10px 0;
+}
+
+.TypeWrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42494D;
+  padding: 10px 0;
+}
+
+.PokemonType {
+  text-align: center;
+  height: 32px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 18px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  padding: 7px 25px;
+}
+
+.NoImage {
+  width: 400px;
+  height: 400px;
+  background-color: #B3B6B8;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.OtherDetails {
+  padding: 20px 10px;
+  padding-top: 60px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42494D;
+}
+
+.Images {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 25px;
+  img{
+    width: 170px;
+  }
+}
+
+.StatusWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 60px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.hp {
+  border: 25px solid #0571A6;
+  color: #0571A6;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.attack {
+  border: 25px solid #E66D00;
+  color: #E66D00;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.defense {
+  border: 25px solid #E6AB09;
+  color: #E6AB09;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.special-attack {
+  border: 25px solid #01B956;
+  color: #01B956;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.special-defense {
+  border: 25px solid #3C48CF;
+  color: #3C48CF;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.speed {
+  border: 25px solid #DE2C2C;
+  color: #DE2C2C;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.StatusItem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.StatusText {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #42494D;
+}
+
+.Status {
+  position: relative;
+  width: 170px;
+  height: 170px;
+}
+
+.EvoWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap:25px;
+  align-items: center;
+}
+

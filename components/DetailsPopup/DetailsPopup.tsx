@@ -3,66 +3,29 @@ import styles from './DetailsPopup.module.scss';
 import { usePage } from '../../context/PageContext';
 import lightThemeOptions from '../../styles/theme/lightTheme';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
+import { IPokemonData } from '../../types/pokemon';
+import { getDisplayName } from '../../utility/common';
 
-type pokemonType =
-  'bug'
-  | 'dark'
-  | 'dragon'
-  | 'electric'
-  | 'fairy'
-  | 'fighting'
-  | 'fire'
-  | 'flying'
-  | 'ghost'
-  | 'grass'
-  | 'ground'
-  | 'ice'
-  | 'normal'
-  | 'poison'
-  | 'psychic'
-  | 'rock'
-  | 'steel'
-  | 'water'
-;
-
-interface DetailsPopupProps {
+interface IDetailsPopup {
   url:string;
 }
 
-interface PokemonTypeProps {
-  slot: number;
-  type: {
-    name: pokemonType;
-    url: string;
-  };
-}
-
-interface PokemonAbilitiesProps {
-  ability:{
-    name: string;
-    url: string;
-  }
-  is_hidden: boolean;
-  slot: number;
-}
-
-interface dataProps {
-  id: number;
-  sprites: {
-    front_default: string;
-  };
-  name: string;
-  types: PokemonTypeProps[];
-  abilities: PokemonAbilitiesProps[];
-  weight: number;
-  height: number;
-}
-
-const DetailsPopup: React.FC<DetailsPopupProps> = ({
+const DetailsPopup: React.FC<IDetailsPopup> = ({
   url}) => {
-  const [data, setData] = useState<dataProps | undefined>(undefined);
+  const [data, setData] = useState<IPokemonData | undefined>(undefined);
   const {getPokemonData} = usePage();
-  const { t } = useTranslation('home')
+  const { t } = useTranslation(['home', 'details'])
+  const router = useRouter();
+  const { pathname, locale } = router;
+
+  const onRedirect = (e:any) => {
+    router.push({
+            pathname: `${pathname}/[locale]/[id]`,
+            query: {id:data?.id ,locale:locale}
+        });
+  };
+
   useEffect(()=> {
     async function fetchData() {
       let response = await getPokemonData(url);
@@ -71,21 +34,6 @@ const DetailsPopup: React.FC<DetailsPopupProps> = ({
     fetchData();
   // eslint-disable-next-line
   },[])
-
-  const getDisplayName = (name:string|undefined) => {
-    if(name) {
-      const splittedName = name.split('-');
-      if(splittedName.length>1) {
-        let label = '';
-        for(let i=0;i<splittedName.length;i++) {
-          label += splittedName[i] + ' ';
-        }
-        return label;
-      }
-      if(splittedName.length===1) return splittedName[0];
-    }
-    return "Unknown";
-  };
 
   return (
     <div>
@@ -101,22 +49,26 @@ const DetailsPopup: React.FC<DetailsPopupProps> = ({
             </div>
             <div className={styles.DetailsWrapper}>
               <div className={styles.SizeWrapper}>
-                <div>Weight :</div>
+                <div>{t("WEIGHT", {ns: "details"})} :</div>
                 <div className={styles.ItemDetails}>{data?.weight}</div>
-                <div>Height :</div>
+                <div>{t("HEIGHT", {ns: "details"})} :</div>
                 <div className={styles.ItemDetails}>{data?.height}</div>
               </div>
               <div className={styles.AbilitiesWrapper}>
-                <div>Abilities :</div>
+                <div>{t("ABILITIES", {ns: "details"})} :</div>
                 <div className={styles.ItemDetails}>
-                  {data?.abilities && data?.abilities.length>0 && data?.abilities.map((ability)=> (<li>{ability.ability.name}</li>))}
+                  {data?.abilities && data?.abilities.length>0 && data?.abilities.map((ability)=> (
+                    <li key={ability.ability.url}>
+                      {`${ability.ability.name} ${ability.is_hidden ? '(hidden)' : ''}`}
+                    </li>
+                  ))}
                 </div>
               </div>
               <div className={styles.TypeWrapper}>
-                <div>Type :</div>
+                <div>{t("TYPE", {ns: "details"})} :</div>
                 <div style={{display: 'flex', gap: 20}}>
                   {
-                    data?.types.map((type) =>
+                    data?.types?.map((type) =>
                       <div
                         className={styles.PokemonType}
                         style={{backgroundColor:lightThemeOptions.backgroundType[type.type.name]}}
@@ -128,7 +80,12 @@ const DetailsPopup: React.FC<DetailsPopupProps> = ({
                 </div>
               </div>
               <div className={styles.ButtonWrapper}>
-                <div className={styles.Button}>{t("MORE_DETAIL")}</div>
+                <div
+                  onClick={(e) => onRedirect(e)}
+                  className={styles.Button}
+                >
+                  {t("MORE_DETAIL")}
+                </div>
               </div>
             </div>
           </div>

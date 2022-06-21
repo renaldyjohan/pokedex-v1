@@ -2,53 +2,17 @@ import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import styles from './PokemonCard.module.scss';
 import { usePage } from '../../context/PageContext';
 import lightThemeOptions from '../../styles/theme/lightTheme';
+import { IPokemonData } from '../../types/pokemon';
+import { getShortDisplayName } from '../../utility/common';
 
-type pokemonType =
-  'bug'
-  | 'dark'
-  | 'dragon'
-  | 'electric'
-  | 'fairy'
-  | 'fighting'
-  | 'fire'
-  | 'flying'
-  | 'ghost'
-  | 'grass'
-  | 'ground'
-  | 'ice'
-  | 'normal'
-  | 'poison'
-  | 'psychic'
-  | 'rock'
-  | 'steel'
-  | 'water'
-;
-
-interface PokemonCardProps {
+interface IPokemonCard {
   url:string;
   setPopup:Dispatch<SetStateAction<string | undefined>>;
 }
 
-interface PokemonTypeProps {
-  slot: number;
-  type: {
-    name: pokemonType;
-    url: string;
-  };
-}
-
-interface PokemonDataProps {
-  id: number;
-  sprites: {
-    front_default: string;
-  };
-  name: string;
-  types: PokemonTypeProps[];
-}
-
-const PokemonCard: React.FC<PokemonCardProps> = ({setPopup,
+const PokemonCard: React.FC<IPokemonCard> = ({setPopup,
   url}) => {
-  const [data, setData] = useState<PokemonDataProps | undefined>(undefined);
+  const [data, setData] = useState<IPokemonData | undefined>(undefined);
   const {getPokemonData} = usePage();
 
   useEffect(()=> {
@@ -64,14 +28,6 @@ const PokemonCard: React.FC<PokemonCardProps> = ({setPopup,
     if (id<10) return `#00${id}`;
     if (id<100) return `#0${id}`;
     return `#${id}`;
-  };
-
-  const getDisplayName = (name:string|undefined) => {
-    if(name) {
-      const splittedName = name.split('-');
-      return(splittedName[0]);
-    }
-    return '';
   };
 
   const getLabel = (name:string|undefined) => {
@@ -104,11 +60,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({setPopup,
             {data && getDisplayId(data.id)}
           </div>
           <div className={styles.PokemonName}>
-            {getDisplayName(data?.name)}
+            {getShortDisplayName(data?.name)}
           </div>
           <div className={styles.TypeWrapper}>
             {
-              data?.types.map((type) =>
+              data?.types?.map((type) =>
                 <div
                   className={styles.PokemonType}
                   style={{backgroundColor:lightThemeOptions.backgroundType[type.type.name]}}

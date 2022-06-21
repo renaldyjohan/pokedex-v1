@@ -1,29 +1,14 @@
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 import axios from 'axios';
+import { IPokemonList } from "../types/pokemon";
 
-export interface pokemonProps {
-    name: string;
-    url: string;
-}
-
-export interface pokemonListProps {
-  count: number;
-  next?: string;
-  previous?: string;
-  getPokemonData:void;
-  results?: pokemonProps[];
-}
-
-export interface getPokemonListsProps {
-    data: pokemonListProps;
-}
 
 type pageContextType = {
     page: number;
     perPage: number;
     setPage?: Dispatch<SetStateAction<number>>;
     setPerPage?: Dispatch<SetStateAction<number>>;
-    pokemonLists?: pokemonListProps;
+    pokemonLists?: IPokemonList;
 };
 
 const pageContextDefaultValues: pageContextType = {
@@ -36,11 +21,11 @@ const PageContext = createContext<pageContextType>(pageContextDefaultValues);
 export function usePage() {
     const [page, setPage] = useState(1)
     const [perPage, setPerPage] = useState(9)
-    const [pokemonLists, setPokemonLists] = useState<pokemonListProps | undefined>(undefined)
+    const [pokemonLists, setPokemonLists] = useState<IPokemonList | undefined>(undefined)
 
     const getPokemonLists = async () => {
       const results =  await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${(page-1)*perPage}&limit=${perPage}`);
-      const data: pokemonListProps = results.data;
+      const data: IPokemonList = results.data;
       setPokemonLists(data)
     }
 

@@ -1,0 +1,72 @@
+.Container {
+  width: max-content;
+  text-align: center;
+  text-align: -webkit-center;
+}
+.Wrapper0 {
+  border: 10px solid #01B956;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  img{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+.Wrapper1 {
+  border: 10px solid #E6AB09;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.Wrapper2 {
+  border: 10px solid #E66D00;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.Wrapper3 {
+  border: 10px solid #DE2C2C;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+

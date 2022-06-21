@@ -7,15 +7,15 @@ import HomeLanding from '../components/HomeLanding/HomeLanding';
 import { useRef } from 'react';
 import PokemonLists from '../components/PokemonLists/PokemonLists';
 
-interface getStaticPropsProps {
+interface IGetStaticProps {
   locale:string;
 }
 
-interface homeProps {
+interface IHome {
   totalPage: number;
 }
 
-const Home: NextPage<homeProps> = ({}) => {
+const Home: NextPage<IHome> = ({}) => {
   const myRef = useRef(null);
   const scrollToRef = (ref:any) => window.scrollTo({top:ref.current.offsetTop, behavior:'smooth'});
   const handleScroll = () => scrollToRef(myRef);
@@ -36,10 +36,10 @@ const Home: NextPage<homeProps> = ({}) => {
   );
 };
 
-export async function getStaticProps({ locale }:getStaticPropsProps) {
+export async function getStaticProps({ locale }:IGetStaticProps) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common','home'])),
+      ...(await serverSideTranslations(locale, ['common', 'home', 'details'])),
     }
   };
 }

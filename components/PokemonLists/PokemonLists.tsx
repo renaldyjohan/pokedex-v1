@@ -6,10 +6,10 @@ import PokemonCard from '../PokemonCard/PokemonCard';
 import { useTranslation } from 'next-i18next';
 import DetailsPopup from '../DetailsPopup/DetailsPopup';
 
-interface PokemonListsProps {
+interface IPokemonLists {
 }
 
-const PokemonLists: React.FC<PokemonListsProps> = ({
+const PokemonLists: React.FC<IPokemonLists> = ({
 }) => {
   const {page, setPage, setPerPage, perPage, pokemonLists} = usePage();
   const { t } = useTranslation('home');
