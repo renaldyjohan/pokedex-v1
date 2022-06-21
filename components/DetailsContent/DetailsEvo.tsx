@@ -3,13 +3,15 @@ import { getShortDisplayName } from '../../utility/common';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 interface IDetailsEvo {
   url: string;
   index: number;
+  chain:any;
 }
 
-const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
+const DetailsEvo: React.FC<IDetailsEvo> = ({url, index, chain}) => {
   const router = useRouter();
   const { pathname } = router;
   const [data, setData] = useState<any>(undefined);
@@ -32,6 +34,7 @@ const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
   },[])
 
   return (
+    <>
     <div className={styles.Container} onClick={(e)=>onRedirect(e)}>
       <div className={styles[`Wrapper${index}`]}>
         {
@@ -43,6 +46,8 @@ const DetailsEvo: React.FC<IDetailsEvo> = ({url, index}) => {
         {data && getShortDisplayName(data.name)}
       </div>
     </div>
+    {index+1< chain.length && <ArrowForwardIcon style={{height:50, width:50}} />}
+    </>
   );
 };
 
